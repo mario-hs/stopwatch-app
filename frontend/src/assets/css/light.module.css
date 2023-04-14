@@ -1,9 +1,9 @@
 :root {
-  --background: #FFFBF3;
-  --nav-background: #EAE6DE;
-  --nav-background: #30312C;
+  --background: #D2CFB7;
+  --nav-background: #FFFCF1;
   --text-primary: #0D0C0A;
-  --text-secondary: #F5DB4C;
+  --text-secondary: #F6DA4A;
   --accent-background: #F3F0E8;
   --icon: #0D0C0A;
+  --shadow: rgba(0, 0, 0 , 0.25)
 }

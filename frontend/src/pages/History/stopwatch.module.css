@@ -1,29 +1,13 @@
 .stop_watch {
-  display: grid;
-  grid-template-rows: 100px 1fr;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-      "filters"
-      "times";
-  gap: 20px;
-  padding-bottom: 40px;
-}
-
-.stop_watch section .stop_watch_filter{
-  grid-area: filters;
-  height: 80px;
-  max-width: 500px;
-  min-width: 285px;
-  width: 90%;
-  border-bottom:solid 2px var(--nav-background);
-  justify-self: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .stop_watch .stop_watch_history {
   grid-area: times;
   position: relative;
   overflow-y: scroll;
-  height: 500px;
+  height: 400px;
   width: 100%;
   margin-block-start: auto;
   text-align: -webkit-center;

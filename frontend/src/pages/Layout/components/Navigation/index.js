@@ -1,18 +1,20 @@
 import { ClockCountdown, Timer } from "@phosphor-icons/react";
-import styles from "./header.module.css";
+import styles from "./navigation.module.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { usePage } from "../../../../hooks/contexts/PageContext";
 
-const Header = () => {
-  const [active, setActive] = useState("stopWatch");
+const Navigation = () => {
+  const { page, togglePage } = usePage();
+
   return (
     <nav>
       <NavLink
         to="/"
         className={`${styles.content_icon} ${
-          active === "stopWatch" && styles.active
+          page === "index" && styles.active
         }`}
-        onClick={(e) => setActive("stopWatch")}
+        onClick={() => togglePage("index")}
       >
         <Timer size={28} color="var(--text-primary)" />
         <span>Inicio</span>
@@ -21,9 +23,9 @@ const Header = () => {
       <NavLink
         to="/history"
         className={`${styles.content_icon} ${
-          active === "history" && styles.active
+          page === "story" && styles.active
         }`}
-        onClick={(e) => setActive("history")}
+        onClick={() => togglePage("story")}
       >
         <ClockCountdown size={28} color="var(--icon)" />
         <span>Histórico</span>
@@ -32,4 +34,4 @@ const Header = () => {
   );
 };
 
-export { Header };
+export { Navigation };

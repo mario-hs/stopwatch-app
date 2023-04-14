@@ -1,14 +1,14 @@
-import { ApplicationDataContextProvider } from "./hooks/contexts/ApplicationDataContext";
+import { PageContextProvider } from "./hooks/contexts/PageContext";
 import { ThemeContextProvider } from "./hooks/contexts/ThemeContext";
 import { Router } from "./routes/Routes";
 
 function App() {
   return (
-    <ApplicationDataContextProvider>
+    <PageContextProvider>
       <ThemeContextProvider>
         <Router />
       </ThemeContextProvider>
-    </ApplicationDataContextProvider>
+    </PageContextProvider>
   );
 }
 

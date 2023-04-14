@@ -3,18 +3,19 @@ import styles from "./stopwatch.module.css";
 import { useEffect, useState } from "react";
 import api from "../../services/Api";
 import { Time } from "./components/Time";
-import { Filter } from "./components/Filter";
+import { usePage } from "../../hooks/contexts/PageContext";
 
 const History = () => {
   const [history, setHistory] = useState();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
+  const { togglePage } = usePage();
 
   useEffect(() => {
     if (history == null) {
       getDataApi();
     }
-    console.log(history);
+    togglePage("story");
   }, [history]);
 
   const handleDelete = (id) => {
@@ -66,11 +67,9 @@ const History = () => {
       return () => abortCont.abort();
     }, 1000);
   };
+
   return (
     <main className={styles.stop_watch}>
-      <section>
-        <Filter />
-      </section>
       <ul className={styles.stop_watch_history}>
         {isPending && <div>Loading...</div>}
         {error && <div>{error}</div>}

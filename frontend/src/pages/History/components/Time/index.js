@@ -34,14 +34,10 @@ const Time = ({ history, handleCallback }) => {
           <li className={styles.wrapper_time} key={`time_${time.id}`}>
             <div className={styles.top}>
               <div className={styles.date}>
-                <Calendar size={24} color="#dde3f0" />
+                <Calendar size={24} />
                 {dateFormatted}
               </div>
-              <Trash
-                size={24}
-                color="#dde3f0"
-                onClick={() => handleDelete(time.id)}
-              />
+              <Trash size={24} onClick={() => handleDelete(time.id)} />
             </div>
             <p className={styles.time}>
               {("0" + Math.floor((time.time / 60000) % 60)).slice(-2)}:
