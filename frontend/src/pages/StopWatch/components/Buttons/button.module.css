@@ -1,0 +1,42 @@
+.control_button {
+  margin: 3rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.button {
+  box-shadow: 0px 0px 300px 24px rgba(223, 170, 18, 0.25);
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  background-color: var(--nav-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.button_border {
+  height: 85%;
+  width: 85%;
+  border-radius: 50%;
+  background:none;
+  border: solid 2px var(--accent-background);
+  text-align: center;
+  text-justify: center;
+}
+
+.button p {
+  color: var(--text-primary);
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  color: var(--text-secondary);
+}
+

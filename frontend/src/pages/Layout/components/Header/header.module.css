@@ -1,0 +1,82 @@
+nav {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-items: flex-start;
+}
+
+.content_icon {
+  height: 75px;
+  width: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content_icon:hover {
+  border-bottom: solid 2px var(--text-secondary);
+  transition: 100ms;
+}
+
+.active {
+  border-bottom: solid 2px var(--text-secondary);
+}
+
+.content_icon span {
+  padding: 7px 2px 5px;
+}
+
+
+@media (max-width: 700px) and (min-height: 400px) {
+  .icon_marvel {
+    width: auto;
+  }
+
+  .big {
+    display: none;
+  }
+
+  .small {
+    display: block;
+  }
+
+  .nav_button {
+    width: 90%;
+    padding-left: 5%;
+    justify-content: center;
+  }
+
+  .nav_button span {
+    display: none;
+  }
+}
+
+@media (max-width: 500px){
+  header {
+    flex-direction: row;
+    padding: 0px 25px;
+  }
+
+  header nav {
+    height: 100%;
+    width: auto;
+    margin: 0px;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .nav_top {
+    gap: 20px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .nav_button {
+    width: 50px;
+    padding-left: 0px;
+    border-radius: 0 0 8rem 8rem;
+  }
+}
