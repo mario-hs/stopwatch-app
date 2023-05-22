@@ -1,8 +1,11 @@
 nav {
   height: 100px;
-  width: 100%;
+  min-width: 350px;
+  max-width: 450px;
+  width: 80%;
+  margin: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   align-items: flex-start;
 }

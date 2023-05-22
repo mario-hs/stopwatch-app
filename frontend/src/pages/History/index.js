@@ -4,19 +4,13 @@ import { useEffect, useState } from "react";
 import api from "../../services/Api";
 import { Time } from "./components/Time";
 import { usePage } from "../../hooks/contexts/PageContext";
+import { useData } from "../../hooks/contexts/DataContent";
 
 const History = () => {
-  const [history, setHistory] = useState();
-  const [isPending, setIsPending] = useState(true);
+  const { historyFilter, setHistory, setHistoryFilter } = useData();
+  const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
   const { togglePage } = usePage();
-
-  useEffect(() => {
-    if (history == null) {
-      getDataApi();
-    }
-    togglePage("story");
-  }, [history]);
 
   const handleDelete = (id) => {
     const abortCont = new AbortController();
@@ -56,6 +50,7 @@ const History = () => {
         })
         .then(({ data }) => {
           setHistory(data.times);
+          setHistoryFilter(data.times);
           setIsPending(false);
           setError(null);
         })
@@ -68,12 +63,22 @@ const History = () => {
     }, 1000);
   };
 
+  useEffect(() => {
+    if (historyFilter === undefined) {
+      setIsPending(true);
+      getDataApi();
+    }
+    togglePage("story");
+  }, [historyFilter]);
+
   return (
     <main className={styles.stop_watch}>
       <ul className={styles.stop_watch_history}>
         {isPending && <div>Loading...</div>}
         {error && <div>{error}</div>}
-        {history && <Time history={history} handleCallback={handleDelete} />}
+        {historyFilter && (
+          <Time history={historyFilter} handleCallback={handleDelete} />
+        )}
       </ul>
     </main>
   );

@@ -1,12 +1,13 @@
 import { SlidersHorizontal } from "@phosphor-icons/react";
 import styles from "./filter.module.css";
-// import { SlidersHorizontal } from "@phosphor-icons/react";
 
 import { useState } from "react";
+import { useData } from "../../hooks/contexts/DataContent";
 
 const Filter = ({ handleCallback }) => {
   const [orderBy, setOrderBy] = useState(false);
-  const [filter, setFilter] = useState({ type: "all", order: true });
+  // const [filter, setFilter] = useState({ type: "all", order: true });
+  const { filter, setFilter } = useData();
 
   function handleOnChange(prop, value) {
     if (prop === "order") {
@@ -16,20 +17,18 @@ const Filter = ({ handleCallback }) => {
       filter[prop] = value;
       setFilter({ ...filter });
     }
-    console.log(filter);
   }
 
   function handleOnClick() {
     setOrderBy(!orderBy);
 
-    if (orderBy) handleCallback(filter.type);
+    if (orderBy) handleCallback(filter);
   }
-  console.log(filter);
 
   return (
     <>
       <div className={styles.stop_watch_filter}>
-        <button onClick={handleOnClick} class="btn">
+        <button onClick={handleOnClick}>
           <SlidersHorizontal size={28} />
         </button>
 

@@ -4,18 +4,32 @@ import { Filter } from "../Filter";
 import { useTheme } from "../../hooks/contexts/ThemeContext";
 import { usePage } from "../../hooks/contexts/PageContext";
 import { useState } from "react";
+import { useData } from "../../hooks/contexts/DataContent";
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const { filter, setFilter, filterHistory } = useData();
   const [inputs, setInputs] = useState("all");
 
   const { page } = usePage();
 
-  function handleFilter(type) {
-    setInputs(type);
+  function handleFilter(filters) {
+    setFilter({ ...filters });
   }
 
-  function handleOnSubmit() {}
+  function handleOnSubmit() {
+    filterHistory();
+  }
+
+  function handleOnChange(prop, value) {
+    if (prop === "startDate") {
+      filter[prop] = value;
+      setFilter({ ...filter });
+    } else {
+      filter["endDate"] = value;
+      setFilter({ ...filter });
+    }
+  }
 
   return (
     <header>
@@ -40,11 +54,27 @@ const Header = () => {
           <div
             className={styles.wrapper_inputs}
             style={
-              inputs === "all" ? { opacity: 0, pointerEvents: "none" } : {}
+              filter.type === "all" ? { opacity: 0, pointerEvents: "none" } : {}
             }
           >
-            <input type="date" name="" id="" />
-            {inputs === "period" && <input type="date" name="" id="" />}
+            <input
+              type="date"
+              name="comeco"
+              id="startDate"
+              onChange={(e) => {
+                handleOnChange("startDate", e.target.value);
+              }}
+            />
+            {filter.type === "period" && (
+              <input
+                type="date"
+                name="fim"
+                id="endDate"
+                onChange={(e) => {
+                  handleOnChange("endDate", e.target.value);
+                }}
+              />
+            )}
           </div>
           <button
             className={styles.button_filter}

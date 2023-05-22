@@ -1,7 +1,6 @@
 import { ClockCountdown, Timer } from "@phosphor-icons/react";
 import styles from "./navigation.module.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import { usePage } from "../../../../hooks/contexts/PageContext";
 
 const Navigation = () => {
